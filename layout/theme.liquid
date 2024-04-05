@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<title>{{ page_title }}</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="description" content="{{ page_description | escape }}">
-		<link rel="canonical" href="{{ canonical_url }}">
-		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<meta charset='utf-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+		<meta name='description' content='{{ page_description | escape }}'>
+		<link rel='canonical' href='{{ canonical_url }}'>
+		<meta name='viewport' content='width=device-width,initial-scale=1,shrink-to-fit=no'>
 
 		{%- comment -%}
 			content_for_header dynamically loads all scripts required by Shopify into the document head.
@@ -19,12 +19,12 @@
 			render 'vite-tag' with 'app.js'
 		%}
 	</head>
-	<body x-data="{overflow: true}" :class="overflow? '':'overflow-hidden'">
+	<body x-data='{overflow: true}' :class="overflow? '':'overflow-hidden'">
 		{%- comment -%} It's purpose is to enhance accessibility for users navigating the site using screen readers or keyboard navigation. {%- endcomment -%}
-		<a class="sr-only skip-to-content-link button" href="#MainContent"> Skip to content </a>
+		<a class='skip-to-content-link button sr-only' href='#MainContent'> Skip to content </a>
 
 		{% sections 'header-group' %}
 		{%- comment -%} The content_for_layout object dynamically outputs the content for each template. {%- endcomment -%}
-		<main role="main">{{ content_for_layout }}</main>
+		<main role='main'>{{ content_for_layout }}</main>
 	</body>
 </html>
