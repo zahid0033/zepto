@@ -1,38 +1,38 @@
 <header
-	class="grid items-center px-6 py-2 mx-auto header md:max-w-desktop md:px-12 md:py-5"
+	class='header mx-auto grid items-center px-6 py-2 md:max-w-desktop md:px-12 md:py-5'
 >
 	<!-- Header Logo -->
-	<div class="mx-auto my-2 header_logo" style="max-width: {{ section.settings.logo_width }}px;">
+	<div class='header_logo mx-auto my-2' style='max-width: {{ section.settings.logo_width }}px;'>
 		{% if section.settings.logo != blank %}
-			<a href="/" class="header_logo">
+			<a href='/' class='header_logo'>
 				{{ section.settings.logo | image_url: width: 400 | image_tag }}
 			</a>
 		{% else %}
-			<a href="/" class="header_logo-title">
+			<a href='/' class='header_logo-title'>
 				{{ shop.name }}
 			</a>
 		{% endif %}
 	</div>
 
 	<!-- Header Menu -->
-	<nav class="flex header_menu" x-data="{ hamburgerIcon: true }">
+	<nav class='header_menu flex' x-data='{ hamburgerIcon: true }'>
 		<button
-			class="md:hidden"
+			class='md:hidden'
 			@click="$dispatch('toggle-menu'); hamburgerIcon = !hamburgerIcon; overflow = !overflow"
-			type="button"
+			type='button'
 		>
-			<div x-show="hamburgerIcon">
+			<div x-show='hamburgerIcon'>
 				{% render 'icon-hamburger', class: 'w-5' %}
 			</div>
-			<div x-show="!hamburgerIcon">
+			<div x-show='!hamburgerIcon'>
 				{% render 'icon-close', class: 'w-5' %}
 			</div>
 		</button>
 
-		<ul class="hidden md:flex">
+		<ul class='hidden md:flex'>
 			{% for link in section.settings.menu.links %}
-				<li class="relative block px-3 py-2 nav_item">
-					<a class="block text-gray-500 border-black hover:text-black hover:border-b" href="{{ link.url }}">
+				<li class='nav_item relative block px-3 py-2'>
+					<a class='block border-black text-gray-500 hover:border-b hover:text-black' href='{{ link.url }}'>
 						{{- link.title -}}
 					</a>
 
@@ -47,19 +47,19 @@
 
 	<!-- Header Icons -->
 	<div
-		class="flex items-center justify-end header_icons"
-		x-data="{ cart_count: {{ cart.item_count }} }"
+		class='header_icons flex items-center justify-end'
+		x-data='{ cart_count: {{ cart.item_count }} }'
 	>
-		{% if shop.customer_accounts_enabled %}
-			<div class="relative z-10">
+		{%- if shop.customer_accounts_enabled -%}
+			<div class='relative z-10'>
 				<a
-					href="{{ routes.account_url }}"
-					title="account link"
-					class="block text-center"
+					href='{{ routes.account_url }}'
+					title='account link'
+					class='block text-center'
 				>
 					{% render 'icon-account', class: 'w-10' %}
-					<span class="sr-only">
-						{% liquid
+					<span class='sr-only'>
+						{%- liquid
 							if customer
 								echo 'Account'
 							else
@@ -71,14 +71,14 @@
 			</div>
 		{% endif %}
 		<button
-			type="button"
-			class="relative ml-0 text-center"
+			type='button'
+			class='relative ml-0 text-center'
 		>
 			{% render 'icon-cart', class: 'w-10' %}
-			<span class="sr-only">Cart</span>
+			<span class='sr-only'>Cart</span>
 			<span
-				x-text="cart_count"
-				class="min-w-[22px] text-sm min-h-[22px] absolute grid place-content-center rounded-full -top-3 -right-1 text-white bg-black"
+				x-text='cart_count'
+				class='absolute -right-1 -top-3 grid min-h-[22px] min-w-[22px] place-content-center rounded-full bg-black text-sm text-white'
 			>
 				{{ cart.item_count }}
 			</span>

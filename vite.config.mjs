@@ -15,11 +15,6 @@ export default defineConfig({
   },
   plugins: [
     shopify(),
-    cleanup(),
-    // copy({
-    //   targets: [
-    //     {src: ['src/liquid/sections/**/*.liquid'], dest: 'sections', flatten: true},
-    //   ]
-    // })
+    cleanup()
   ]
 })
