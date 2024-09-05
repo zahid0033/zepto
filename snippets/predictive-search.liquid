@@ -1,0 +1,14 @@
+<div class="flex justify-center md:max-w-desktop mx-auto md:px-12">
+  <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form mx-auto flex w-full">
+      <input
+        class="search__input field__input block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-bl-lg rounded-tl-lg bg-gray-50"
+        type="search"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="Search"        
+      >
+      <input type="hidden" name="options[prefix]" value="last">
+      <input type="hidden" name="type" value="product,page,article">
+      <input type="submit" value="Search" class="p-4 text-white border-gray-300 bg-blue-400 rounded-br-lg rounded-tr-lg"/>      
+  </form>
+</div>
