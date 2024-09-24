@@ -1,0 +1,100 @@
+<style>
+    .predictive-search-results-container{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+</style>
+
+{%- if predictive_search.performed -%}
+
+  {% assign first_column_results_size = predictive_search.resources.queries.size
+ | plus: predictive_search.resources.collections.size
+ | plus: predictive_search.resources.pages.size
+ | plus: predictive_search.resources.articles.size
+  %}
+
+  <div id="predictive-search-results" data-predictive-search role="listbox">
+    {%- if first_column_results_size > 0 or predictive_search.resources.products.size > 0 -%}
+      <div class="predictive-search-results-container" id="predictive-search-results_container">
+        {% comment %} div for product results {% endcomment %}
+        {% if predictive_search.resources.products.size > 0 %}
+          <div class="sugg-products-wrapper sugg-wrapper">
+            <p>Suggested Products</p>
+            <div class="sugg-items">
+              {% for product in predictive_search.resources.products %}
+                <div class="sugg-product">
+                  <a href="{{ product.url }}">
+                    {{ product.title }}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% comment %} div for collection results {% endcomment %}
+        {% if predictive_search.resources.collections.size > 0 %}
+          <div class="sugg-collections-wrapper sugg-wrapper">
+            <p>Suggested Collections</p>
+            <div class="sugg-items">
+              {% for collection in predictive_search.resources.collections %}
+                <div class="sugg-collection">
+                  <a href="{{ collection.url }}">
+                    {{ collection.title }}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% comment %} div for page results {% endcomment %}
+        {% if predictive_search.resources.pages.size > 0 %}
+          <div class="sugg-pages-wrapper sugg-wrapper">
+            <p>Suggested Pages</p>
+            <div class="sugg-items">
+              {% for page in predictive_search.resources.pages %}
+                <div class="sugg-page">
+                  <a href="{{ page.url }}">
+                    {{ page.title }}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% comment %} div for article results {% endcomment %}
+        {% if predictive_search.resources.articles.size > 0 %}
+          <div class="sugg-articles-wrapper sugg-wrapper">
+            <p>Suggested Articles</p>
+            <div class="sugg-items">
+              {% for article in predictive_search.resources.articles %}
+                <div class="sugg-article">
+                  <a href="{{ article.url }}">
+                    {{ article.title }}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+
+        {% comment %} div for total suggested results count and view all link {% endcomment %}
+        {% if predictive_search.resources.queries.size > 0 %}
+          <div class="sugg-total-results">
+            {% if predictive_search.resources.queries.size == 1 %}
+              <p>{{ predictive_search.resources.queries.size }} result found</p>
+            {% else %}
+              <p>{{ predictive_search.resources.queries.size }} results found</p>
+            {% endif %}
+            <a href="{{ routes.search_url }}?q={{ predictive_search.query }}" class="sugg-view-all">View all</a>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+{% endif %}

@@ -1,0 +1,94 @@
+{% comment %} 
+        Renders a header search modal. Should be used with 'header.liquid'
+       
+        Accepts: 
+        - input_id: {String} Id for the search input element (required)
+       
+        Usage:
+        {% render 'header-search', input_id: 'head-Search_modal'%} 
+{% endcomment %}
+<style>
+    #search-Modal_results{
+        border: 2px solid #776d6d;
+    }
+    #search-Modal_results #predictive-search-results_container{
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+    }
+
+    #search-Modal_results #predictive-search-results_container p{
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 17px;
+        color: #776D6D;
+    }
+
+    #search-Modal_results #predictive-search-results_container a{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #0b0303;
+    }
+        
+    
+</style>
+
+<details-modal class="header_search">
+  <detail>
+    <summary-icon
+      class="search-Icon_round"
+      aria-haspopup="dialog"
+      aria-label="Search"
+      role="button">
+      {% render 'icon-search'
+        , class: 'w-5' %}
+    </summary-icon>
+    <div
+      class="search-Modal_wrapper"
+      role="dialog"
+      aria-modal="true">
+      
+      <div class="search-Modal_Content">
+        <predictive-search>
+          <form
+            action="{{ routes.search_url }}"
+            method="get"
+            role="search"
+            class="search-Modal_Form">
+            <div class="search-Modal_field">
+              <input
+                type="search"
+                name="q"
+                id="{{ input_id }}"
+                class="search-Modal_input"
+                placeholder="Search"
+                role="combobox"
+                aria-expanded="false"
+                aria-owns="predictive-search-results"
+                aria-controls="predictive-search-results"
+                aria-haspopup="listbox"
+                aria-autocomplete="list"
+                autocorrect="off"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false">
+                <input type="hidden" name="options[prefix]" value="last">
+                <button
+              type="reset"
+              class="reset__button field__button"
+              aria-label="Reset"
+            >
+              Reset
+            </button>
+            </div>
+          </form>
+          
+        </predictive-search>
+      </div>
+      <div class="search-Modal_overlay"></div>
+      <div id="search-Modal_results"></div>
+
+    </div>
+  </detail>
+</details-modal>
