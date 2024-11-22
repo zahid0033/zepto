@@ -1,11 +1,28 @@
 {
   "sections": {
+    "banner_EiHqWU": {
+      "type": "banner",
+      "settings": {
+        "banner_text": "Welcome to our store!",
+        "image_picker": "shopify:\/\/shop_images\/chicago-city-lights-at-night.jpg",
+        "horizontal_alignment": "center"
+      }
+    },
     "collection-product-grid": {
       "type": "main-collection-product-grid",
-      "settings": {}
+      "settings": {
+        "products_per_page": 9,
+        "show_secondary_image": true,
+        "show_rating": false,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
+    "banner_EiHqWU",
     "collection-product-grid"
   ]
 }

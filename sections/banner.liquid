@@ -1,0 +1,58 @@
+<div class='relative' style='width: 100%; height: 400px; overflow: hidden;'>
+	<img src='{{ section.settings.image_picker | image_url: width: 1700}}' class='h-full sm:min-h-min'>
+	<h2
+		class='
+			absolute top-1/2 translate-y-[-50%] text-3xl font-extrabold sm:text-5xl text-white px-5 w-full
+			{% if  section.settings.horizontal_alignment == 'left' %} text-left pl-5
+			{% elsif section.settings.horizontal_alignment == 'center' %} text-center
+			{% elsif section.settings.horizontal_alignment == 'right' %} text-right pr-5
+			{% endif %}
+		'
+	>
+		{{ section.settings.banner_text }}
+	</h2>
+</div>
+{% schema %}
+	{
+		"name": "Banner",
+		"settings": [
+			{
+				"type": "text",
+				"id": "banner_text",
+				"label": "Type your text",
+				"default": "Welcome to our store!"
+			},
+			{
+				"type": "image_picker",
+				"id": "image_picker",
+				"label": "Pick a banner image"
+			},
+			{
+				"type": "select",
+				"id": "horizontal_alignment",
+				"label": "Horizontal alignment",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Middle"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"default": "center"
+			}
+		],
+		"presets": [
+			{
+				"name": "Banner",
+				"category": "Custom"
+			}
+		]
+	}
+{% endschema %}

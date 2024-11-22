@@ -5,7 +5,7 @@
 /* Header */
 .header {
 	display: grid;
-	grid-template-areas: "header-logo header-menu header-icons";
+	grid-template-areas: 'header-logo header-menu header-icons';
 	grid-template-columns: 1fr 2fr 1fr;
 }
 .header .header_logo {
@@ -20,15 +20,17 @@
 
 @media screen and (max-width: 768px) {
 	.header {
-		grid-template-areas: "header-menu header-logo header-icons";
+		grid-template-areas: 'header-menu header-logo header-icons';
 	}
 }
 /* Submenu */
 .header .nav_item:hover .dropdown-child {
-  display: block;
+	display: block;
 }
 .header .child_nav_item:hover .dropdown-grandchild {
-  display: block;
+	display: block;
 }
-
-
+/* featured products */
+.featured-products {
+	/* display: flex; */
+}

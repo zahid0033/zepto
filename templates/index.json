@@ -1,11 +1,20 @@
 {
-  "sections": {   
+  "sections": {
     "main": {
       "type": "main-index",
       "settings": {}
+    },
+    "banner": {
+      "type": "banner",
+      "settings": {
+        "banner_text": "Welcome to our store!",
+        "image_picker": "shopify:\/\/shop_images\/chicago-city-lights-at-night.jpg",
+        "horizontal_alignment": "center"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "banner"
   ]
 }

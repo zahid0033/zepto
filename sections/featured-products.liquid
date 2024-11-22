@@ -1,0 +1,56 @@
+<h1 class='text-3xl sm:text-5xl px-5 w-full text-center my-7 {% if section.settings.title_show == 'show' %} block {% else %} hidden {% endif%}'>
+	Featured Prodcts
+</h1>
+<div class='featured-products flex flex-wrap mt-7'>
+	{% for block in section.blocks %}
+		{% if block.settings.product %}
+			{% assign product = all_products[block.settings.product] %}
+			{% render 'card-product', card_product: product, show_secondary_image: true, show_rating: false %}
+		{% else %}
+			<p>No product selected</p>
+		{% endif %}
+	{% endfor %}
+</div>
+
+{% schema %}
+	{
+		"name": "Featured Products",
+		"settings": [
+			{
+				"type": "select",
+				"id": "title_show",
+				"label": "Show Title",
+				"options": [
+					{
+						"value": "show",
+						"label": "Show"
+					},
+					{
+						"value": "hide",
+						"label": "Hide"
+					}
+				],
+				"default": "show"
+			}
+		],
+		"blocks": [
+			{
+				"type": "product",
+				"name": "Product",
+				"settings": [
+					{
+						"type": "product",
+						"id": "product",
+						"label": "Add Product"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Featured Products",
+				"category": "Featured Products"
+			}
+		]
+	}
+{% endschema %}
