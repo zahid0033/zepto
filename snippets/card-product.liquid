@@ -11,8 +11,8 @@
 {% endcomment %}
 
 {% if card_product and card_product != empty %}
-	<a href='{{ card_product.url }}' class='block card-wrapper group w-1/4 p-1'>
-		<div class='card border h-[400px] flex flex-col '>
+	<div class='block card-wrapper group w-1/5 p-1'>
+		<a href='{{ card_product.url }}' class='card border h-[400px] flex flex-col '>
 			<!-- product image -->
 			{% if card_product.featured_media %}
 				{% comment %} assigning a variable and condition for showing secondary image on hover {% endcomment %}
@@ -46,8 +46,8 @@
 
 				{% render 'price-element', product: card_product, class: 'px-2 pb-2' %}
 			</div>
-		</div>
-	</a>
+		</a>
+	</div>
 {% else %}
 	<div class='border card-wrapper group'>
 		<div class='card'>
